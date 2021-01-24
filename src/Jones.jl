@@ -1,7 +1,7 @@
 module Jones
 using LinearAlgebra, StaticArrays
 
-import Base: +
+import Base: |
 import LinearAlgebra: normalize
 
 export Beam, Elem, l, h, v, rhcp, lhcp, lp, qwp, hwp, lcp, rcp
@@ -12,8 +12,14 @@ Elem{T} = SArray{Tuple{2,2},T,2,4}
 
 normalize(e::Elem) = Elem(normalize(Array(e)))
 
-(+)(es::Elem...) = reduce(*, reverse(es))
-(+)(b::Beam, es::Elem...) = reduce(*, reverse(es)) * b
+
+"""
+    |
+
+Perform Jones matrix multiplication on a reversed list of arguments.
+"""
+(|)(es::Elem...) = reduce(*, reverse(es))
+(|)(b::Beam, es::Elem...) = reduce(*, reverse(es)) * b
 
 
 """

@@ -63,6 +63,29 @@ qwp
 hwp
 ```
 
+## Custom operator
+The Jones calculus requires matrix multiplication to happen in *reverse*,
+starting with the final element, and moving back to the beam.  Since this is
+unintuitive, in Julia we can override operators and have a handy shortcut:
+
+```@docs
+|
+```
+
+For example, let's take a left-handed circularly polarised beam of light, going
+through a quarter-wave plate, linear polariser, and another quarter-wave plate.
+Ordinarily, we would write it as:
+```julia
+qwp(90) * lp(45) * qwp * lhcp ≈ lhcp
+```
+
+But with `|` operator, we can say:
+```julia
+lhcp | qwp(0) | lp(45) | qwp(90) ≈ lhcp
+```
+which is a more natural way to express it.
+
+
 ## References
 - <https://en.wikipedia.org/wiki/Jones_calculus>
 - <https://tinkering.xyz/polsim/>

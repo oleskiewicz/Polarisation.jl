@@ -31,8 +31,8 @@ end
     end
 
     @testset "beam + lp" begin
-        @test l(0u"°") + lp(0u"°") ≈ l(0u"°")
-        @test l(90u"°") + lp(90u"°") ≈ l(90u"°")
+        @test l(0u"°") | lp(0u"°") ≈ l(0u"°")
+        @test l(90u"°") | lp(90u"°") ≈ l(90u"°")
     end
 
 end
