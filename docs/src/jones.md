@@ -18,7 +18,7 @@ the wave, both in ``x`` and ``y`` directions.
 
 Common normalised Jones vectors are included in the package:
 ```@docs
-Jones.l
+l
 ```
 ```@docs
 h

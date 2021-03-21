@@ -63,7 +63,7 @@ l(θ = 0) = Beam(cos(θ), sin(θ)) |> normalize
 
 Right-hand circular polarised:
 ```math
-\\frac{1,2}
+\\frac{1}{2}
 \\begin{pmatrix}
 	1 \\\\
 	-i
@@ -78,7 +78,7 @@ rhcp = Beam([1; -im]) |> normalize
 
 Left-hand circular polarised:
 ```math
-\\frac{1,2}
+\\frac{1}{2}
 \\begin{pmatrix}
 	1 \\\\
 	i
@@ -94,7 +94,7 @@ lhcp = Beam([1; im]) |> normalize
 Linear polariser at angle ``\\theta``:
 ```math
 \\begin{pmatrix}
-	\\cos^2(\\theta) & (\\theta)*sin(\\theta) \\\\
+	\\cos^2(\\theta) & (\\theta)sin(\\theta) \\\\
 	\\cos(\\theta)\\sin(\\theta) & \\sin^2(\\theta)
 \\end{pmatrix}
 ```
@@ -110,7 +110,7 @@ lp(θ = 0) = Elem([
 
 Right circular polariser:
 ```math
-\\frac{1,2}
+\\frac{1}{2}
 \\begin{pmatrix}
 	1 & i \\\\
 	-i & 1
@@ -124,7 +124,7 @@ rcp = Elem([1 im; -im 1]) |> normalize
 
 Left circular polariser:
 ```math
-\\frac{1,2}
+\\frac{1}{2}
 \\begin{pmatrix}
 	1 & -i \\\\
 	i & 1
@@ -136,7 +136,14 @@ lcp = Elem([1 -im; im 1]) |> normalize
 """
 	qwp(θ = 0)
 
-Quarter-wave plate.
+Quarter-wave plate:
+```math
+e^\\frac{-i\\pi}{4}
+\\begin{pmatrix}
+	\\cos^2(\\theta)+i \\sin^2(\\theta) & (1-i)\\sin(\\theta)\\cos(\\theta) \\\\
+	(1-i)\\sin(\\theta)\\cos(\\theta) & \\sin^2(\\theta)+i\\cos^2(\\theta)
+\\end{pmatrix}
+```
 """
 qwp(θ = 0) =
     ℯ^((-im * π) / 4) * Elem(
@@ -149,7 +156,14 @@ qwp(θ = 0) =
 """
 	hwp(θ = 0)
 
-Half-wave plate.
+Half-wave plate:
+```math
+e^\\frac{-i\\pi}{2}
+\\begin{pmatrix}
+	\\cos^2(\\theta)-\\sin^2(\\theta) & 2\\sin(\\theta)\\cos(\\theta) \\\\
+	2\\sin(\\theta)\\cos(\\theta) & \\sin^2(\\theta)-\\cos^2(\\theta)
+\\end{pmatrix}
+```
 """
 hwp(θ = 0) =
     ℯ^((-im * π) / 2) * Elem([
