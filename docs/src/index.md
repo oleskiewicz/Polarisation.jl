@@ -7,13 +7,13 @@ Julia package for polarised light calculations, inspired by
 [`zmitchell/polarization`](https://github.com/zmitchell/polarization).
 
 ```julia
-using Polarisation.Jones
+using Polarisation.Jones, Unitful
 
 # linearly polarised light at 90°, using Unitful.jl
 l(90u"°")
 
 # left-hand circular polarised beam, going through 3 elements
-lhcp | qwp(0) | lp(u"45°") | qwp(u"90°")
+lhcp | qwp(0) | lp(45u"°") | qwp(90u"°")
 ```
 
 # Roadmap
